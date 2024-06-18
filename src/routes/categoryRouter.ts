@@ -9,11 +9,12 @@ const categoryRouter = Router();
 categoryRouter.use(ensureAuthenticatedMiddleware);
 
 categoryRouter.post(
-  "/admin/category/create",
+  "/stock-api/category/create",
   schemaValidateMiddleware(categorySchema),
   categoryController.createCategory
 );
 
-categoryRouter.get("/admin/categories", categoryController.getAllCategories);
+categoryRouter.get("/stock-api/categories", categoryController.getAllCategories);
 
 export { categoryRouter };
+

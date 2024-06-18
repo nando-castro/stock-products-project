@@ -1,3 +1,4 @@
+import * as productRepository from "../repositories/productRepository";
 import * as stockRepository from "../repositories/stockRepository";
 
 import { TypeStockData } from "../types/StockTypes";
@@ -7,7 +8,20 @@ export async function createStock(data: TypeStockData) {
 }
 
 export async function getAllStocks() {
-  return await stockRepository.findAllStock();
+  const dadosStock = await stockRepository.findAllStock();
+
+  const dadosProducts = dadosStock.map(async (item) => {
+    const product = await productRepository.findProduct(item.productId);
+
+    return {
+      ...item,
+      product: product,
+    };
+  });
+
+  const productFinal = await Promise.all(dadosProducts);
+
+  return productFinal;
 }
 
 export async function deleteStock(id: string) {

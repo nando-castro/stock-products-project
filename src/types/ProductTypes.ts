@@ -7,7 +7,7 @@ export interface IProduct {
   price: number;
   categoryId: string;
   brandId: string;
-  image: string;
+  image: string | null;
   createdAt: string;
   updatedAt: string;
 }

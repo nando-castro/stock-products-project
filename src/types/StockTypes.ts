@@ -3,7 +3,7 @@ import { Stock } from "@prisma/client";
 export interface IStock {
   id: string;
   productId: string;
-  quantity: number;
+  amount: number;
   createdAt: string;
   updatedAt: string;
 }

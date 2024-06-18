@@ -8,16 +8,20 @@ import { registerSchema } from "./../schemas/registerSchema";
 const authRouter = Router();
 
 authRouter.post(
-  "/admin/create",
+  "/stock-api/user/create",
   schemaValidateMiddleware(registerSchema),
   authController.createController
 );
-
 authRouter.post(
-  "/admin/auth",
+  "/stock-api/user/auth",
   schemaValidateMiddleware(loginSchema),
   authController.authAdmin
 );
-authRouter.get("/admin", ensureAuthenticatedMiddleware, authController.teste);
+authRouter.get(
+  "/stock-api/user",
+  ensureAuthenticatedMiddleware,
+  authController.teste
+);
 
 export { authRouter };
+

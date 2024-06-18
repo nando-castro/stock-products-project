@@ -12,8 +12,8 @@ export async function createProduct(req: Request, res: Response) {
     price: Number(product.price),
     categoryId: product.categoryId,
     brandId: product.brandId,
-    image:
-      image?.filename || `${(new Date().getTime() / 1000) * Math.random()}`,
+    image: image ?
+       `${image?.filename}${(new Date().getTime() / 1000) * Math.random()}` : null,
   };
 
   await productService.createProduct(data);

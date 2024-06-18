@@ -23,10 +23,12 @@ export async function deleteProduct(id: string) {
   if (result === null) throw notFoundError("Product not exist!");
 
   if (result !== null) {
-    try {
-      fs.unlinkSync("./src/public/uploads/images/" + result.image);
-    } catch (error) {
-      console.log(error);
+    if (result.image) {
+      try {
+        fs.unlinkSync("./src/public/uploads/images/" + result.image);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 

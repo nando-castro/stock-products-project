@@ -1,13 +1,14 @@
 import client from "../databases/database";
 import { TypeStockData } from "../types/StockTypes";
 
-export async function createStock(name: TypeStockData) {
-  await client.stock.create({ data: name });
+export async function createStock(data: TypeStockData) {
+  // console.log(data)
+  await client.stock.create({ data });
 }
 
-export async function findStockByName(name: string) {
+export async function findStockByName(productId: string) {
   return await client.stock.findFirst({
-    where: { name: { equals: name, mode: "insensitive" } },
+    where: { productId: { equals: productId, mode: "insensitive" } },
   });
 }
 
