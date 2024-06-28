@@ -16,6 +16,12 @@ productRouter.post(
   schemaValidateMiddleware(productSchema),
   productController.createProduct
 );
+productRouter.put(
+  "/stock-api/product/update/:id",
+  upload.single("image"),
+  schemaValidateMiddleware(productSchema),
+  productController.updateProduct
+);
 productRouter.get("/stock-api/products", productController.getAllProducts);
 productRouter.delete("/stock-api/product/:id", productController.deleteProduct);
 

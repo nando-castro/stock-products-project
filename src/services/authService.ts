@@ -32,7 +32,7 @@ export async function loginAdmin(
     { userId: userExists.id },
     `${process.env.JWT_SECRET}`,
     {
-      expiresIn: 60 * 60,
+      expiresIn: 60 * 60 * 24,
     }
   );
 

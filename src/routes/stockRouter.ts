@@ -16,7 +16,7 @@ stockRouter.post(
 
 stockRouter.get("/stock-api/stocks", stockController.getAllStocks);
 stockRouter.put(
-  "/stock-api/stock/:id",
+  "/stock-api/stock/update/:id",
   schemaValidateMiddleware(stockSchema),
   stockController.updateStock
 );
